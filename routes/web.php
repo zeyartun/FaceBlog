@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('Front.index');
 });
+Route::get('/posts',function(){
+    return view('Front.posts');
+});
+
 
 Auth::routes();
 
