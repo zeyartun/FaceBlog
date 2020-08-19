@@ -20,6 +20,9 @@ Route::get('/posts',function(){
     return view('Front.posts');
 });
 
+Route::get('/adminHome',function(){
+    return view('Back.index');
+});
 
 Auth::routes();
 
