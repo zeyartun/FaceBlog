@@ -168,7 +168,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="#" class="d-block">{{auth::user()->name}}</a>
                     </div>
                 </div>
 
@@ -188,15 +188,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link active">
+                                    <a href={{ url('/adminHome/posts') }} class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Active Page</p>
+                                        <p>Posts</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Inactive Page</p>
+                                        <p>Members</p>
                                     </a>
                                 </li>
                             </ul>
@@ -209,6 +209,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <span class="right badge badge-danger">New</span>
                                 </p>
                             </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href={{route('logout')}} class="nav-link"  onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                                <i class="nav-icon fas fa-power-off"></i>
+                                <p>Logout</p>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </li>
                     </ul>
                 </nav>

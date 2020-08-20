@@ -13,17 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Front.index');
-});
-Route::get('/posts',function(){
-    return view('Front.posts');
-});
-
-Route::get('/adminHome',function(){
-    return view('Back.index');
-});
-
+Route::get('/', 'HomeController@index');
+Route::get('/posts', 'HomeController@posts');
+Route::get('/post/{id}/view','HomeController@postView');
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/adminHome','AdminController@index');
+Route::get('/adminHome/posts','AdminController@posts');
+Route::get('/adminHome/post/new','AdminController@newPost');

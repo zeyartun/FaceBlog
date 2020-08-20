@@ -3,6 +3,7 @@
 @section('title','index')
 
 @section('content')
+
 <main id="main">
 
     <!-- ======= About Section ======= -->
