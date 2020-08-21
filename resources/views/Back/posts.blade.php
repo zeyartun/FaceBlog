@@ -22,7 +22,7 @@
         <div class="card p-3">
           <div class="card-header"><h3>{{$post->post_title}}</h3></div>          
           <div class="card-body">
-            <img src={{asset($post->image)}} alt="" class="w-100">
+            <a href={{ url('../post/'.$post->id.'/view') }}><img src={{asset($post->image)}} alt="" class="w-100"></a>
             {{ Str::limit($post->post_content,200)}}
           </div>
           <div class="card-footer">

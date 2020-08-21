@@ -10,9 +10,11 @@
             @foreach ($AllPosts as $post)                
             <div class="col-4">
                 <div class="card mb-4 gallery-item"  data-aos="zoom-in">
-                    <a href={{ asset('assets/img/gallery/gallery-1.jpg')}} class="venobox" data-gall="gallery-item">
-                        <img class="img-fluid" src={{ asset('assets/img/gallery/gallery-1.jpg')}} class="card-img-top" alt="...">
-                    </a>
+                    @if ($post->image != null)
+                        <a href={{url('/post/'.$post->id.'/view')}}>
+                            <img class="img-fluid" src={{ asset('..//'.$post->image)}} class="card-img-top" alt="...">
+                        </a>
+                    @endif                    
                     <div class="card-body">
                     <h5 class="card-title">{{$post->post_title}}</h5>
                     <p class="card-text">{{ Str::limit($post->post_content,100) }}</p>
