@@ -14,7 +14,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = role::get();
+        return view('Back.roles', compact('roles'));
     }
 
     /**

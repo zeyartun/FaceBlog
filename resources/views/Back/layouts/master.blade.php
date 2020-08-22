@@ -31,7 +31,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Home</a>
+                    <a href={{url('/adminHome')}} class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -188,26 +188,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href={{ url('/adminHome/posts') }} class="nav-link active">
+                                    <a href={{ url('/adminHome') }} class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Admin</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href={{ url('/adminHome/posts') }} class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Posts</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href={{ url('/adminHome/members') }} class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Members</p>
+                                        <span class="right badge badge-danger">New</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href={{ url('/adminHome/roles') }} class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Simple Link
-                                    <span class="right badge badge-danger">New</span>
-                                </p>
+                                <p>Role</p>
                             </a>
                         </li>
                         <li class="nav-item">

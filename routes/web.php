@@ -26,3 +26,7 @@ Route::post('/adminHome/post/SavePost','PostController@store');
 Route::get('/adminHome/post/{id}/delete','PostController@destroy');
 Route::get('/adminHome/post/{id}/edit','PostController@edit');
 Route::post('/adminHome/post/{id}/update','PostController@update');
+
+Route::get('adminHome/members','UserController@show');
+Route::get('adminHome/roles','RoleController@index');
+
