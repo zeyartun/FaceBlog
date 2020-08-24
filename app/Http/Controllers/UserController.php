@@ -11,4 +11,45 @@ class UserController extends Controller
         $users = User::paginate(6);
         return view('Back.members',compact('users'));
     }
+    public function edit($id)
+    {
+        $user = User::where('id',$id)->first();
+        // dd($user);
+        return view('Back.UserEdit',compact('user'));
+    }
+
+    public function update(Request $req, $id)
+    {
+        $Uname = $req->name;
+        $Uemail = $req->email;
+
+        $user = User::find($id);
+
+        $image = $req->file('file');
+        if($image != null){
+            $img_name = time() . $image->GetClientOriginalName();
+            $img_path = public_path('img/userImage');
+            $image->move($img_path,$img_name);
+
+            $old_img = $user->image;
+            if($old_img != null){
+                unlink(public_path().'/'.$old_img);
+            }
+
+            $image_path = 'img/userImage/'.$img_name;
+            
+        }else{
+            $image_path = $user->image;
+        }        
+                
+        $user->update([
+            'name' => $Uname,
+            'email' => $Uemail,
+            'image' => $image_path,
+
+        ]);
+
+        Return redirect('adminHome/members')->with('success','User Edit Successfull...');
+    }
+
 }

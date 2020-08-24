@@ -116,7 +116,12 @@ class PostController extends Controller
             $image_data = '/img'.'/'.$image_name;
         }
 
-        $post->update(['user_id'=>$userID,'post_title'=>$postTitle,'post_content'=>$postCont,'image'=>$image_data]);
+        $post->update([
+            'user_id'=>$userID,
+            'post_title'=>$postTitle,
+            'post_content'=>$postCont,
+            'image'=>$image_data
+            ]);
         return redirect('adminHome/posts')->with('success','Success Update Post');
 
     }
