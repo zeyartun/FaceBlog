@@ -13,7 +13,7 @@ class PostController extends Controller
     }
     public function index()
     {
-        $posts = post::paginate(12);
+        $posts = post::withTrashed()->orderBy('id','DESC')->paginate(12);
         return view('Back.posts',compact('posts'));
     }
 
@@ -61,9 +61,10 @@ class PostController extends Controller
      * @param  \App\post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(post $post)
+    public function show($id)
     {
-        //
+        $post = post::withTrashed()->find($id);
+        return view('back.postView',compact('post'));
     }
 
     /**
@@ -74,7 +75,7 @@ class PostController extends Controller
      */
     public function edit($postID)
     {
-        $post = post::find($postID);
+        $post = post::withTrashed()->find($postID);
 
         return view('Back/postEdit',compact('post'));
 
@@ -90,7 +91,7 @@ class PostController extends Controller
     public function update(Request $request , $postID)
     {
         $userID = Auth::user()->id;
-        $post = post::find($postID);
+        $post = post::withTrashed()->find($postID);
 
         $postTitle = $request->PostTitle;
         $postCont = $request->PostContent;
@@ -134,12 +135,23 @@ class PostController extends Controller
      */
     public function destroy($postID)
     {
-        $post = post::find($postID);
-        $imgPath = public_path().$post->image;
-        if(isset($post->image)){
+        $post = post::withTrashed()->find($postID);
+        if($post->image != null){
+            $imgPath = public_path().$post->image;
             unlink($imgPath);
         }
-        $post->delete();
+        $post->forceDelete();
         return redirect('adminHome/posts')->with('success','Success Delete post!');
+    }
+
+    public function hide($id)
+    {
+        post::find($id)->Delete();
+        return redirect('adminHome/posts')->with('success','Success hide post!');
+    }
+    public function restore($id)
+    {
+        post::withTrashed()->find($id)->restore();
+        return redirect('adminHome/posts')->with('success','Success Restore post!');
     }
 }

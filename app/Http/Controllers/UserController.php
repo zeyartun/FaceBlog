@@ -8,7 +8,7 @@ class UserController extends Controller
 {
     public function show()
     {
-        $users = User::paginate(6);
+        $users = User::paginate(9);
         return view('Back.members',compact('users'));
     }
     public function edit($id)
