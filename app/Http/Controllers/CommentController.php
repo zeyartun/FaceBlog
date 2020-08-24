@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\comment;
+use App\post;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -22,9 +23,16 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, $postID)
     {
-        //
+        $comm = new comment;
+        $userID = Auth()->user()->id;
+
+        $comm->post_id = $postID;
+        $comm->user_id = $userID;
+        $comm->comment = $request->comment;
+        $comm->save();
+        return redirect(url('/post/'.$postID.'/view'));
     }
 
     /**

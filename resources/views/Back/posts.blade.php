@@ -22,11 +22,16 @@
         <div class="card p-3">
           <div class="card-header"><h3>{{$post->post_title}}</h3></div>          
           <div class="card-body">
-            <a href={{ url('../post/'.$post->id.'/view') }}><img src={{asset($post->image)}} alt="" class="w-100"></a>
+            <a href={{ url('../post/'.$post->id.'/adminView') }}><img src="{{asset($post->image)}}" alt="" class="w-100"></a>
             {{ Str::limit($post->post_content,200)}}
           </div>
           <div class="card-footer">
+            @if ($post->deleted_at)
+            <a href={{url('/adminHome/post/'.$post->id.'/restore')}} class="btn btn-success">Restore</a>
             <a href={{url('/adminHome/post/'.$post->id.'/delete')}} class="btn btn-danger">Delete</a>
+            @else
+            <a href={{url('/adminHome/post/'.$post->id.'/hide')}} class="btn btn-warning">Hide</a>
+            @endif            
             <a href="{{url('/adminHome/post/'.$post->id.'/edit')}}" class="btn btn-info">Edit</a>
           </div>
         </div>
