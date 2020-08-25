@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\post;
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
 
 class PostController extends Controller
 {
@@ -64,7 +65,8 @@ class PostController extends Controller
     public function show($id)
     {
         $post = post::withTrashed()->find($id);
-        return view('back.postView',compact('post'));
+        $user = post::find($id)->user;
+        return view('back.postView',compact('post','user'));
     }
 
     /**

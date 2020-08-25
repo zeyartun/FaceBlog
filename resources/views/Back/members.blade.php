@@ -18,6 +18,7 @@
                 <tr>
                     <th scope="col">#ID</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Email</th>
                     <th scope="col">Date</th>
                     <th scope="col">Role</th>
@@ -30,6 +31,7 @@
                     <tr>
                         <th scope="row">{{ $user->id }}</th>
                         <td>{{ $user->name }}</td>
+                        <td><img src='{{ asset($user->image) }}' width="15%" style="border-radius: 50%;" alt=""></td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at }}</td>
                         <td>role</td>

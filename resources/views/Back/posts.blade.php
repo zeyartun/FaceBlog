@@ -20,7 +20,8 @@
       @foreach($posts as $post)
       <div class="col-md-3">
         <div class="card p-3">
-          <div class="card-header"><h3>{{$post->post_title}}</h3></div>          
+          <div class="card-header"><h3>{{$post->post_title}}</h3></div>
+          <p><b>Author By</b> {{$post->user_id}} <b>at</b> <i>{{date('d-m-Y',strtotime($post->created_at))}}</i></p>          
           <div class="card-body">
             <a href={{ url('../post/'.$post->id.'/adminView') }}><img src="{{asset($post->image)}}" alt="" class="w-100"></a>
             {{ Str::limit($post->post_content,200)}}

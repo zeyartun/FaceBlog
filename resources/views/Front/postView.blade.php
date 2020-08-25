@@ -7,18 +7,20 @@
     <div class="container">
         <div class="w-100">
             <h3 class="p-2 m-3">{{$post->post_title}}</h3>
+            
             @if ($post->image != null)
                 <img src={{ url( $post->image ) }} alt="" class="w-100">
             @endif            
                
             <p class="p-2 m-3">{{$post->post_content}}</p>
+            <p><b>Author By</b> {{$user->name}} <br> <i>{{date('d-m-Y',strtotime($post->created_at))}}</i></p>
         </div>
         <hr>
         @auth
         <form action="{{url($post->id.'/comment')}}" method="post">
             @csrf
         <div class="input-group mb-3">
-            <input name="comment" type="text" class="form-control" placeholder="Sometime Comment..."></input>
+            <input name="comment" type="text" class="form-control" placeholder="Sometime Comment..." required></input>
             <div class="input-group p-2 center">
               <button class="btn btn-outline-info " type="submit" >Comment</button>
             </div>

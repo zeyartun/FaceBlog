@@ -64,7 +64,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('User Image') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" class="" name="image">
+                                <input id="image" type="file" class="" name="image" required>
                             </div>
                         </div>
 

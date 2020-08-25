@@ -64,7 +64,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        dd($data);
+        // dd($data);
+
         if($data['image'] != null){
             $image = $data['image'];
             $img_name = time().$image->getClientOriginalName();

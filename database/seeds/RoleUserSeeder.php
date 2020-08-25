@@ -15,7 +15,7 @@ class RoleUserSeeder extends Seeder
     {
         $faker = faker\factory::create();
 
-        for ($i=0; $i < 4; $i++) { 
+        for ($i=1; $i < 10; $i++) { 
             $roleUser = new role_user();
             $roleUser->user_id = $i;
             $roleUser->role_id = rand(1,3);

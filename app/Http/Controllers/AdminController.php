@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -18,6 +19,8 @@ class AdminController extends Controller
      */
     public function index()
     {
+        $user = User::find(1)->role;
+        dd($user);
         return view('back.index');
     }
 }

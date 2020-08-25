@@ -17,6 +17,7 @@
                     @endif                    
                     <div class="card-body">
                     <h5 class="card-title">{{$post->post_title}}</h5>
+                    <p>Author By {{$post->user_id}} at <i>{{date('d-m-Y',strtotime($post->created_at))}}</i></p>
                     <p class="card-text">{{ Str::limit($post->post_content,100) }}</p>
                     <a href={{url('/post/'.$post->id.'/view')}} class="btn btn-primary">View</a>
                     </div>

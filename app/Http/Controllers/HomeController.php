@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index()
-    {        
-        return view('front.index');
+    {     
+        $AllPosts = post::orderBy('id','DESC')->paginate(6);   
+        return view('front.index',compact('AllPosts'));
     }
 
     public function posts()
@@ -23,9 +24,10 @@ class HomeController extends Controller
         // $comm = post::with('comment.user')->get();
         
         $comm = comment::where('post_id',$id)->orderBy('id','DESC')->get();
+        $user = post::find($id)->user;
         $post = post::find($id);
         // dd($post);
-        return view('Front.postView',compact('post','comm'));
+        return view('Front.postView',compact('post','comm','user'));
     }
 
 }
