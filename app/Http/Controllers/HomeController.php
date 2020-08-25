@@ -20,11 +20,11 @@ class HomeController extends Controller
     }
     public function postView($id)
     {
-        // $comm = comment::find(2)->user;
-        // dd($comm);
+        // $comm = post::with('comment.user')->get();
         
         $comm = comment::where('post_id',$id)->orderBy('id','DESC')->get();
         $post = post::find($id);
+        // dd($post);
         return view('Front.postView',compact('post','comm'));
     }
 
