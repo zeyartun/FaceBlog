@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,5 +33,8 @@ Route::get('/adminHome/post/{id}/edit','PostController@edit');
 Route::post('/adminHome/post/{id}/update','PostController@update');
 
 Route::get('adminHome/members','UserController@show');
+Route::get('adminHome/member/{id}/edit','UserController@edit');
+Route::post('adminHome/member/{id}/update','UserController@update');
+
 Route::get('adminHome/roles','RoleController@index');
 
