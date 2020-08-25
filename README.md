@@ -17,4 +17,5 @@ php artisan serve
 # You Can Do It.
 ### Can Edit User profile image
 ### Can Edit post and add post image
-### Can Comment in posts But you must login
+### Can Hide and Delete post
+### Can Comment in posts But you must be login
