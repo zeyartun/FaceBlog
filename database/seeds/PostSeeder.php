@@ -14,11 +14,12 @@ class PostSeeder extends Seeder
     {
         $faker = faker\factory::create();
         
-        for ($i=0; $i < 20 ; $i++) { 
+        for ($i=1; $i < 20 ; $i++) { 
             $post = new post();
             $post->user_id = rand(1,4);
             $post->post_title = $faker->text(20);
             $post->post_content = $faker->text(5000);
+            $post->image = '/img/photo'.rand(1,4).'.png';
             $post->save();
         }
     }

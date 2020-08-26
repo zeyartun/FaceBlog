@@ -19,8 +19,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $user = User::find(1)->role;
-        dd($user);
+        // $user = User::find(1)->role;
+        // dd($user);
         return view('back.index');
     }
 }
