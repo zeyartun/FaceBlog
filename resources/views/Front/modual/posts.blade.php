@@ -11,7 +11,7 @@
               <div class="card mb-4 gallery-item"  data-aos="zoom-in">
                   @if ($post->image != null)
                       <a href={{url('/post/'.$post->id.'/view')}}>
-                          <img class="img-fluid" src="{{ asset('../'.$post->image)}}" class="card-img-top" alt="...">
+                          <img class="img-fluid" src="{{ asset($post->image)}}" class="card-img-top" alt="...">
                       </a>
                   @endif                    
                   <div class="card-body">

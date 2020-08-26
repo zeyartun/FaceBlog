@@ -23,7 +23,7 @@
           <div class="card-header"><h3>{{$post->post_title}}</h3></div>
           <p><b>Author By</b> {{$post->user_id}} <b>at</b> <i>{{date('d-m-Y',strtotime($post->created_at))}}</i></p>          
           <div class="card-body">
-            <a href={{ url('../post/'.$post->id.'/adminView') }}><img src="{{asset($post->image)}}" alt="" class="w-100"></a>
+            <a href={{ url('../adminHome/post/'.$post->id.'/view') }}><img src="{{asset($post->image)}}" alt="" class="w-100"></a>
             {{ Str::limit($post->post_content,200)}}
           </div>
           <div class="card-footer">

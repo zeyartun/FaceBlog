@@ -19,22 +19,25 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/{postID}/comment','CommentController@create');
 
-Route::get('/adminHome','AdminController@index');
-Route::get('/adminHome/posts','PostController@index');
-Route::get('/adminHome/post/new','PostController@create');
-Route::post('/adminHome/post/SavePost','PostController@store');
-Route::get('/post/{id}/adminView','PostController@show');
+Route::group(['prefix'=>'adminHome','middleware'=>'auth'],function(){
+    Route::get('/','AdminController@index');
+    Route::get('/posts','PostController@index');
+    Route::get('/post/new','PostController@create');
+    Route::post('/post/SavePost','PostController@store');
+    Route::get('/post/{id}/view','PostController@show');
 
-Route::get('/adminHome/post/{id}/hide','PostController@hide');
-Route::get('/adminHome/post/{id}/delete','PostController@destroy');
-Route::get('/adminHome/post/{id}/restore','PostController@restore');
+    Route::get('/post/{id}/hide','PostController@hide');
+    Route::get('/post/{id}/delete','PostController@destroy');
+    Route::get('/post/{id}/restore','PostController@restore');
 
-Route::get('/adminHome/post/{id}/edit','PostController@edit');
-Route::post('/adminHome/post/{id}/update','PostController@update');
+    Route::get('/post/{id}/edit','PostController@edit');
+    Route::post('/post/{id}/update','PostController@update');
 
-Route::get('adminHome/members','UserController@show');
-Route::get('adminHome/member/{id}/edit','UserController@edit');
-Route::post('adminHome/member/{id}/update','UserController@update');
+    Route::get('/members','UserController@show');
+    Route::get('/member/{id}/edit','UserController@edit');
+    Route::post('/member/{id}/update','UserController@update');
 
-Route::get('adminHome/roles','RoleController@index');
+    Route::get('/roles','RoleController@index');
+});
+
 

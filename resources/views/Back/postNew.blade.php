@@ -13,7 +13,7 @@
         </div>        
         <div class="form-group">
           <label for="exampleFormControlTextarea1">Post Content</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="PostContent"></textarea>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" name="PostContent"></textarea>
         </div>
         <div class="custom-file">
           <input type="file" class="custom-file-input" id="customFile" name="file" multiple>
