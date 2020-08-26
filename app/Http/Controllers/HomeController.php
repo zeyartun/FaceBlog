@@ -27,7 +27,7 @@ class HomeController extends Controller
         // dd($comm);
         $user = post::find($id)->user;
         $post = post::find($id);
-        // dd($post);
+        // dd($user);
         return view('Front.postView',compact('post','comm','user'));
     }
 
