@@ -22,8 +22,8 @@
         <button type="submit" class="btn btn-primary mt-3 float-right px-5">Update</button>
       </form>
       <div class="container">
-      <img src="{{asset($post->image)}}" alt="" width="200px" class="mt-2">
-      </div>
+        <img src="{{asset($post->image)}}" alt="" width="200px" class="mt-2">
+      </div>      
       </div>
     </div>
 @endsection

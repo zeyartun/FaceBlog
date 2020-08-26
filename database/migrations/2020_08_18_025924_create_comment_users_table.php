@@ -15,7 +15,7 @@ class CreateCommentUsersTable extends Migration
     {
         Schema::create('comment_users', function (Blueprint $table) {
             $table->id();
-            $table->integer('com_id');
+            $table->integer('comment_id');
             $table->integer('user_id');
             $table->timestamps();
         });

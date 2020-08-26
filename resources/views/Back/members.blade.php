@@ -34,7 +34,11 @@
                         <td><img src='{{ asset($user->image) }}' width="15%" style="border-radius: 50%;" alt=""></td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at }}</td>
-                        <td>role</td>
+                        <td>
+                            @foreach ($user->roles as $role)
+                                {{$role->role_name}}
+                            @endforeach
+                        </td>
                         <td><a href={{ 'member/' . $user->id . '/edit' }}>Edit</a></td>
                     </tr>
                 @endforeach

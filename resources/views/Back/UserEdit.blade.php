@@ -23,6 +23,12 @@
           <input type="file" class="custom-file-input" id="customFile" name="file" multiple>
           <label class="custom-file-label" for="customFile">Choose Image</label>
         </div>
+        <div class="mt-2">
+          @foreach ($roles as $role)
+              <input type="checkbox" name="{{$role->role_name}}" id="{{$role->role_name}}"> 
+              <label for="{{$role->role_name}}">{{$role->role_name}}</label>
+          @endforeach
+        </div>
         <button type="submit" class="btn btn-primary mt-3 float-right px-5">Update</button>
       </form>
       

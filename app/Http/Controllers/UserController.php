@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\role;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -15,7 +16,8 @@ class UserController extends Controller
     {
         $user = User::where('id',$id)->first();
         // dd($user);
-        return view('Back.UserEdit',compact('user'));
+        $roles = role::all();
+        return view('Back.UserEdit',compact('user','roles'));
     }
 
     public function update(Request $req, $id)

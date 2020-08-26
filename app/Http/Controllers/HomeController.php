@@ -24,6 +24,7 @@ class HomeController extends Controller
         // $comm = post::with('comment.user')->get();
         
         $comm = comment::where('post_id',$id)->orderBy('id','DESC')->get();
+        // dd($comm);
         $user = post::find($id)->user;
         $post = post::find($id);
         // dd($post);

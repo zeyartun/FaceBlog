@@ -17,7 +17,7 @@ class CommentUserSeeder extends Seeder
         for ($i=0; $i < 200 ; $i++) { 
 
             $commentUser = new comment_user();
-            $commentUser->com_id = $i;
+            $commentUser->comment_id = $i;
             $commentUser->user_id = rand(1,3);
             $commentUser->save();
         }

@@ -27,23 +27,24 @@
         </div>
         </form>
         @else
-        <p>Do you want to Comment. Please <a href="{{route('login')}}">Login</a> or <a href="{{route('register')}}">Register</a></p>
+        <p>Do you want to Comment? Please <a href="{{route('login')}}">Login</a> or <a href="{{route('register')}}">Register</a></p>
         @endauth 
 
         <hr>
         <div class="card mb-3">
-            <div class="row">                
+                            
                 @foreach ($comm as $com)
-                <div class="col-2">
-                    <img style="border-radius: 50%;width:80px;" class="p-2 float-right" src="{{ asset('assets/img/team/team-1.jpg')}}" alt="">
-                </div>                
-                <div class="col-10 float-left p-3">
-                    <a><h6>{{$com->user_id}}</h6></a>
-                    <p>{{$com->comment}}</p>
-                </div>
-                @endforeach                
-            </div>            
-        </div>            
+                <div class="row">                    
+                        <div class="col-2">
+                            <img style="border-radius: 50%;width:80px;" class="p-2 float-right" src="{{ asset($user->image)}}" alt="">
+                        </div>                
+                        <div class="col-10 float-left p-3">
+                            <a><h6>{{$user->name}}</h6></a>   
+                            <p>{{$com->comment}}</p>
+                        </div> 
+                </div>           
+                @endforeach     
+            </div> 
     </div>
 
 
