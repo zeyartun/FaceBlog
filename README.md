@@ -9,10 +9,13 @@ change Database Name...
 php artisan migrate:fresh --seed
 php artisan serve
 ```
-# Admin
-## To Admin => localhost:8000/adminHome 
-## useremail => zeyar1@gmail.com
-## password => password
+# login
+### To Admin => localhost:8000/adminHome 
+## (Please See you want to login role's email)
+### useremail => zeyar0@gmail.com
+### password => password
+
+
 
 # You Can Do It.
 ### Can Edit User profile image
@@ -22,9 +25,10 @@ php artisan serve
 ### Admin => can see all members and edit all posts
 ### manger => can't see all member but edit all posts
 ### author => can't see all member but edit his posts
+### other => can comment and see all posts but can't new posts
 
 # Need to work
 
-## Protect Manager Route
-## Redirect to Home page if not member
-## need edit role for members
+### Protect Manager Route
+### Redirect to Home page if not member
+### need edit role for members
