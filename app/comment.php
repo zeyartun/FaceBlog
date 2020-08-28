@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class comment extends Model
 {
-    public function users(){
-       return $this->belongsTo('App\user');
+    public function user(){
+       return $this->belongsTo('App\User');
     }
 
     public function post(){

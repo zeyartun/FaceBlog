@@ -33,15 +33,15 @@
         <hr>
         <div class="card mb-3">
                             
-                @foreach ($post->comments as $com)
-                <div class="row">                    
-                        <div class="col-2">
-                            <img style="border-radius: 50%;width:80px;" class="p-2 float-right" src="{{ asset($com->users)}}" alt="">
-                        </div>                
-                        <div class="col-10 float-left p-3">
-                            <a><h6>{{$com->users}}</h6></a>   
-                            <p>{{$com->comment}}</p>
-                        </div> 
+                @foreach ($comm as $com)
+                <div class="row">
+                    <div class="col-2">
+                        <img style="border-radius: 50%;width:80px;" class="p-2 float-right" src="{{asset($com->user->image)}}" alt="">
+                    </div>                
+                    <div class="col-10 float-left p-3">
+                        <a><h6>{{$com->user->name}}</h6></a>
+                        <p>{{$com->comment}}</p>
+                    </div> 
                 </div>           
                 @endforeach     
             </div> 
