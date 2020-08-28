@@ -17,6 +17,10 @@ class AdminController extends Controller
     {
         // $user = User::find(1)->role;
         // dd($user);
-        return view('back.index');
+        if(auth()->user()->roles == 'Author'){
+            return view('Front.index');
+        }else{
+            return view('back.index');
+        }
     }
 }

@@ -65,6 +65,7 @@
 
                             <div class="col-md-6">
                                 <input id="image" type="file" class="" name="image" required>
+                                <i>500px,500px</i>
                             </div>
                         </div>
 

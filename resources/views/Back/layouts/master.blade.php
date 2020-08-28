@@ -199,20 +199,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <p>Posts</p>
                                     </a>
                                 </li>
+                                @foreach (auth()->user()->roles as $role)
+                                @if ($role->role_name == 'Admin' )
                                 <li class="nav-item">
                                     <a href={{ url('/adminHome/members') }} class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Members</p>
-                                        <span class="right badge badge-danger">New</span>
+                                    <p>Members</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href={{ url('/adminHome/roles') }} class="nav-link">
+                                        <i class="nav-icon fas fa-th"></i>
+                                        <p>Role</p>
+                                    </a>
+                                </li>
+                                @endif
+                                @endforeach                                                                
                             </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href={{ url('/adminHome/roles') }} class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>Role</p>
-                            </a>
                         </li>
                         <li class="nav-item">
                             <a href={{route('logout')}} class="nav-link"  onclick="event.preventDefault();
