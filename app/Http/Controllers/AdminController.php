@@ -20,7 +20,7 @@ class AdminController extends Controller
         if(auth()->user()->roles == 'Author'){
             return view('Front.index');
         }else{
-            return view('back.index');
+            return view('Back.index');
         }
     }
 }

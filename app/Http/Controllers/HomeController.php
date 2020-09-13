@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\post;
 use App\comment;
-use App\user;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,13 +11,13 @@ class HomeController extends Controller
     public function index()
     {     
         $AllPosts = post::orderBy('id','DESC')->paginate(6);   
-        return view('front.index',compact('AllPosts'));
+        return view('Front.index',compact('AllPosts'));
     }
 
     public function posts()
     {
         $AllPosts = post::orderBy('id','DESC')->paginate(9);
-        return view('front.posts',compact('AllPosts'));
+        return view('Front.posts',compact('AllPosts'));
     }
     public function postView($id)
     {
