@@ -1,3 +1,4 @@
+<section id="hero">
 <div class="container">
     <div class="row">
         <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
@@ -30,3 +31,4 @@
         <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
     </g>
 </svg>
+</section><!-- End Hero -->

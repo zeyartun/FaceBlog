@@ -41,7 +41,7 @@
 <body>
 
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+    <header id="header" class="fixed-top d-flex align-items-center">
         <div class="container d-flex align-items-center">
 
             <div class="logo mr-auto">

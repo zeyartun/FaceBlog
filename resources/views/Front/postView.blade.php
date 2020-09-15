@@ -3,8 +3,8 @@
 @section('title','Posts')
     
 @section('content')
-
-    <div class="container">
+<section>
+    <div class="container mt-5">
         <div class="w-100">
             <h3 class="p-2 m-3">{{$post->post_title}}</h3>
             
@@ -47,6 +47,6 @@
             </div> 
     </div>
 
-
+</section>
 @endsection
 

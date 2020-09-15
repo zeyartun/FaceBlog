@@ -3,8 +3,8 @@
 @section('title','index')
 
 @section('content')
-
 <main id="main">
+  @include('Front.layouts.hero')
 
     <!-- ======= About Section ======= -->
     @include('Front.modual.about')

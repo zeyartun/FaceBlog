@@ -3,8 +3,8 @@
 @section('title','Posts')
     
 @section('content')
-
-    <div class="container">
+<section>
+    <div class="container mt-5">
         <div class="row">
             
             @foreach ($AllPosts as $post)                
@@ -29,6 +29,6 @@
         <div>{{$AllPosts->links()}}</div>
         
     </div>
-
+</section>
 @endsection
 
