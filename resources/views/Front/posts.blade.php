@@ -8,7 +8,7 @@
         <div class="row">
             
             @foreach ($AllPosts as $post)                
-            <div class="col-4">
+            <div class="col-md-4">
                 <div class="card mb-4 gallery-item"  data-aos="zoom-in">
                     @if ($post->image != null)
                         <a href={{url('/post/'.$post->id.'/view')}}>
