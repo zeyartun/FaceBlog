@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class role_auth
+class isManagerMiddleware
 {
     /**
      * Handle an incoming request.
@@ -20,7 +20,7 @@ class role_auth
             return redirect('/login');
         }else{
             foreach(Auth::user()->roles as $role){
-                if($role->role_name == "Admin" ){
+                if($role->role_name == "Manager" ){
                     return $next($request);
                 }else{                     
                     return redirect(url('/'));

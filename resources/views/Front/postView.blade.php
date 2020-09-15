@@ -39,7 +39,7 @@
                         <img style="border-radius: 50%;width:80px;" class="p-2 float-right" src="{{asset($com->user->image)}}" alt="">
                     </div>                
                     <div class="col-10 float-left p-3">
-                        <a><h6>{{$com->user->name}}</h6></a>
+                        <a><h6>{{$com->user->name}} <i class="badge badge-info">{{$com->created_at->diffForHumans()}}</i></h6></a>
                         <p>{{$com->comment}}</p>
                     </div> 
                 </div>           

@@ -22,8 +22,11 @@
                     <th scope="col">Email</th>
                     <th scope="col">Date</th>
                     <th scope="col">Role</th>
-                    <th scope="col">Edit</th>
-
+                    @foreach (auth()->user()->roles as $role)
+                        @if ($role->role_name == "Admin")
+                        <th scope="col">Edit</th>
+                        @endif  
+                    @endforeach
                 </tr>
             </thead>
             <tbody>

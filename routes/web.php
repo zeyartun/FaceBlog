@@ -23,7 +23,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/{postID}/comment','CommentController@create');
 
-Route::group(['prefix'=>'adminHome','middleware'=>'isAdmin'],function(){
+Route::group(['prefix'=>'adminHome','middleware'=>'admin'],function(){
     Route::get('/','AdminController@index');
     Route::get('/posts','PostController@index');
     Route::get('/post/new','PostController@create');
@@ -37,13 +37,14 @@ Route::group(['prefix'=>'adminHome','middleware'=>'isAdmin'],function(){
     Route::get('/post/{id}/edit','PostController@edit');
     Route::post('/post/{id}/update','PostController@update');
 
-    // Route::group(['middleware'=>'isAdmin'], function () {
-        Route::get('/members','UserController@show');
+    Route::get('/members','UserController@show');
+    Route::get('/roles','RoleController@index');
+
+    Route::group(['middleware'=>'admin_role'], function () {
         Route::get('/member/{id}/edit','UserController@edit');
         Route::post('/member/{id}/update','UserController@update');
-
-        Route::get('/roles','RoleController@index');
-    // });
+    });
+    
     
 });
 

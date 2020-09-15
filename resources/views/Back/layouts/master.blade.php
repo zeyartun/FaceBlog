@@ -179,7 +179,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     @foreach(auth()->user()->roles as $role)
-                    <span class="badge badge-info">
+                    <span class="badge badge-info m-1">
                         {{$role->role_name}}
                     </span>
                     @endforeach
@@ -213,7 +213,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </a>
                                 </li>
                                 @foreach (auth()->user()->roles as $role)
-                                @if ($role->role_name == "Manager" )
+                                @if ($role->role_name == "Manager" || $role->role_name == "Admin" )
                                 <li class="nav-item">
                                     <a href={{ url('/adminHome/members') }} class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
@@ -226,8 +226,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <p>Role</p>
                                     </a>
                                 </li>
+                                @break
                                 @endif
-                                @endforeach                                                                
+                                @endforeach 
                             </ul>
                         </li>
                         <li class="nav-item">
