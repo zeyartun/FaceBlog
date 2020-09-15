@@ -164,12 +164,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src={{ asset('/'.auth::user()->image) }} class="img-circle elevation-2"
-                            alt="User Image">
+                        @if(auth::user()->image) {
+                            <img src={{asset('/'.auth::user()->image)}}  class="img-circle elevation-2"> 
+                        }
+                        @else{ 
+                            <img src={{asset('admin/dist/img/user1-128x128.jpg')}} class="img-circle elevation-2">
+                        } 
+                        @endif
                     </div>
                     <div class="info">
                     <a href="#" class="d-block">{{auth::user()->name}}</a>
                     </div>
+
+                </div>
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    @foreach(auth()->user()->roles as $role)
+                    <span class="badge badge-info">
+                        {{$role->role_name}}
+                    </span>
+                    @endforeach
                 </div>
 
                 <!-- Sidebar Menu -->
@@ -200,7 +213,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </a>
                                 </li>
                                 @foreach (auth()->user()->roles as $role)
-                                @if ($role->role_name == 'Admin' )
+                                @if ($role->role_name == "Manager" )
                                 <li class="nav-item">
                                     <a href={{ url('/adminHome/members') }} class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>

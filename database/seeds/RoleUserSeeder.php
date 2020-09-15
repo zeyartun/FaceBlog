@@ -18,7 +18,7 @@ class RoleUserSeeder extends Seeder
         for ($i=1; $i < 10; $i++) { 
             $roleUser = new role_user();
             $roleUser->user_id = $i;
-            $roleUser->role_id = rand(1,3);
+            $roleUser->role_id = rand(1,4);
             $roleUser->save();
         }
     }

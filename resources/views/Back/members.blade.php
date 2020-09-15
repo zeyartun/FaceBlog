@@ -31,15 +31,21 @@
                     <tr>
                         <th scope="row">{{ $user->id }}</th>
                         <td>{{ $user->name }}</td>
-                        <td><img src='{{ asset($user->image) }}' width="15%" style="border-radius: 50%;" alt=""></td>
+                        <td><img src='{{ asset($user->image) }}' width="25px;" style="border-radius: 50%;" alt=""></td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at }}</td>
                         <td>
                             @foreach ($user->roles as $role)
-                                {{$role->role_name}}
+                                <span class="badge badge-info">
+                                    {{$role->role_name}}
+                                </span>
                             @endforeach
                         </td>
+                        @foreach (auth()->user()->roles as $role)
+                        @if ($role->role_name == "Admin")
                         <td><a href={{ 'member/' . $user->id . '/edit' }}>Edit</a></td>
+                        @endif  
+                        @endforeach
                     </tr>
                 @endforeach
             </tbody>

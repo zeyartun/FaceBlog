@@ -22,9 +22,9 @@ class UserController extends Controller
 
     public function update(Request $req, $id)
     {
+        $roles = $req->role_names;
         $Uname = $req->name;
         $Uemail = $req->email;
-
         $user = User::find($id);
 
         $image = $req->file('file');
@@ -32,7 +32,6 @@ class UserController extends Controller
             $img_name = time() . $image->GetClientOriginalName();
             $img_path = public_path('img/userImage');
             $image->move($img_path,$img_name);
-
             $old_img = $user->image;
             if($old_img != null){
                 unlink(public_path().'/'.$old_img);
@@ -50,6 +49,8 @@ class UserController extends Controller
             'image' => $image_path,
 
         ]);
+
+        $user->roles()->sync($roles);
 
         Return redirect('adminHome/members')->with('success','User Edit Successfull...');
     }

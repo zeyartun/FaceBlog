@@ -4,11 +4,11 @@
     
 @section('content')
   <div class="container-fluid">
-    @foreach (auth()->user()->roles as $role)
-    @if ($role->role_name != "")        
+    {{-- @foreach (auth()->user()->roles as $role) --}}
+    {{-- @if ($role->role_name != "User")         --}}
     <div class="mb-3 p-2"><a href={{url('/adminHome/post/new')}} class="btn btn-success"> New Post </a></div>
-    @endif
-    @endforeach
+    {{-- @endif --}}
+    {{-- @endforeach --}}
     @if (session('success'))
         <div class="alert alert-info alert-dismissible fade show" role="alert">
           {{ session('success') }}
@@ -31,7 +31,7 @@
             {{ Str::limit($post->post_content,200)}}
           </div>
           @foreach (auth()->user()->roles as $role)
-          @if ($role->role_name == 'Admin' || $role->role_name == 'Manger' || auth()->user()->id == $post->user->id)
+          @if ($role->role_name == 'Admin' || $role->role_name == 'Manager' || auth()->user()->id == $post->user->id)
           <div class="card-footer">
             @if ($post->deleted_at)
             <a href={{url('/adminHome/post/'.$post->id.'/restore')}} class="btn btn-success">Restore</a>

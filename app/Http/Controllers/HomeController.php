@@ -5,11 +5,12 @@ use App\post;
 use App\comment;
 use App\user;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     public function index()
-    {     
+    { 
         $AllPosts = post::orderBy('id','DESC')->paginate(6);   
         return view('front.index',compact('AllPosts'));
     }

@@ -24,10 +24,19 @@
           <label class="custom-file-label" for="customFile">Choose Image</label>
         </div>
         <div class="mt-2">
+          <label for="exampleFormControlInput1">roles</label>
+          <div>
           @foreach ($roles as $role)
-              <input type="checkbox" name="{{$role->role_name}}" id="{{$role->role_name}}"> 
+              <input type="checkbox" name="role_names[]" id="{{$role->role_name}}" value="{{$role->id}}" 
+              @foreach ($user->roles as $userRole)
+                @if ($userRole->role_name == $role->role_name)
+                checked
+                @endif
+              @endforeach
+              > 
               <label for="{{$role->role_name}}">{{$role->role_name}}</label>
           @endforeach
+        </div>
         </div>
         <button type="submit" class="btn btn-primary mt-3 float-right px-5">Update</button>
       </form>

@@ -12,8 +12,8 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $roles = ['Admin','Manger','Author'];
-        for ($i=0; $i < 3; $i++) { 
+        $roles = ['Admin','Manager','Author','User'];
+        for ($i=0; $i < 4; $i++) { 
             $role = new role();
             $role->role_name = $roles[$i];
             $role->save();

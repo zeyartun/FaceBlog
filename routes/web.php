@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+    
+
+
 Route::get('/', 'HomeController@index');
 Route::get('/posts', 'HomeController@posts');
 Route::get('/post/{id}/view','HomeController@postView');
@@ -19,7 +23,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/{postID}/comment','CommentController@create');
 
-Route::group(['prefix'=>'adminHome','middleware'=>'auth'],function(){
+Route::group(['prefix'=>'adminHome','middleware'=>'isAdmin'],function(){
     Route::get('/','AdminController@index');
     Route::get('/posts','PostController@index');
     Route::get('/post/new','PostController@create');
@@ -33,11 +37,14 @@ Route::group(['prefix'=>'adminHome','middleware'=>'auth'],function(){
     Route::get('/post/{id}/edit','PostController@edit');
     Route::post('/post/{id}/update','PostController@update');
 
-    Route::get('/members','UserController@show');
-    Route::get('/member/{id}/edit','UserController@edit');
-    Route::post('/member/{id}/update','UserController@update');
+    // Route::group(['middleware'=>'isAdmin'], function () {
+        Route::get('/members','UserController@show');
+        Route::get('/member/{id}/edit','UserController@edit');
+        Route::post('/member/{id}/update','UserController@update');
 
-    Route::get('/roles','RoleController@index');
+        Route::get('/roles','RoleController@index');
+    // });
+    
 });
 
 
