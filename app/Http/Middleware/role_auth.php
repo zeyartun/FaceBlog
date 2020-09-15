@@ -22,11 +22,9 @@ class role_auth
             foreach(Auth::user()->roles as $role){
                 if($role->role_name == "Admin" ){
                     return $next($request);
-                }else{                     
-                    return redirect(url('/'));
                 }
-                
             }
+            return redirect(url('/'));               
         }
     }
 }
