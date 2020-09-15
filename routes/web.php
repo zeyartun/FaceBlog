@@ -23,24 +23,30 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/{postID}/comment','CommentController@create');
 
-Route::group(['prefix'=>'adminHome','middleware'=>'admin'],function(){
+Route::group(['prefix'=>'adminHome','middleware'=>'isAuth'],function(){
     Route::get('/','AdminController@index');
     Route::get('/posts','PostController@index');
     Route::get('/post/new','PostController@create');
     Route::post('/post/SavePost','PostController@store');
     Route::get('/post/{id}/view','PostController@show');
 
-    Route::get('/post/{id}/hide','PostController@hide');
-    Route::get('/post/{id}/delete','PostController@destroy');
-    Route::get('/post/{id}/restore','PostController@restore');
+    Route::group(['middleware' => ['isAuthor']], function () {
+        
+        Route::get('/post/{id}/hide','PostController@hide');
+        Route::get('/post/{id}/delete','PostController@destroy');
+        Route::get('/post/{id}/restore','PostController@restore');
+        
+        Route::get('/post/{id}/edit','PostController@edit');
+        Route::post('/post/{id}/update','PostController@update');
+    });
+    
+    Route::group(['middleware'=>'isManager'], function () {
+        
+        Route::get('/members','UserController@show');
+        Route::get('/roles','RoleController@index');
+    });
 
-    Route::get('/post/{id}/edit','PostController@edit');
-    Route::post('/post/{id}/update','PostController@update');
-
-    Route::get('/members','UserController@show');
-    Route::get('/roles','RoleController@index');
-
-    Route::group(['middleware'=>'admin_role'], function () {
+    Route::group(['middleware'=>'isAdmin'], function () {
         Route::get('/member/{id}/edit','UserController@edit');
         Route::post('/member/{id}/update','UserController@update');
     });

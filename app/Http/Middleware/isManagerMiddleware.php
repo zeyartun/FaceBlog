@@ -20,13 +20,11 @@ class isManagerMiddleware
             return redirect('/login');
         }else{
             foreach(Auth::user()->roles as $role){
-                if($role->role_name == "Manager" ){
+                if($role->role_name == "Admin" || $role->role_name == "Manager" ){
                     return $next($request);
-                }else{                     
-                    return redirect(url('/'));
                 }
-                
             }
+            return redirect(url('/login'));                
         }
     }
 }

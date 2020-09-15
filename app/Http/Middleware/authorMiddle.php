@@ -4,8 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-
-class adminMiddleware
+use App\post;
+class authorMiddle
 {
     /**
      * Handle an incoming request.
@@ -16,17 +16,17 @@ class adminMiddleware
      */
     public function handle($request, Closure $next)
     {
+        $post = post::find($request->id);
+        // dd($post);
         if(!Auth::check()){
             return redirect('/login');
         }else{
-            foreach(Auth::user()->roles as $role){ 
-
-                if( $role->role_name != Null ){
+            foreach(Auth::user()->roles as $role){
+                if($role->role_name == "Admin" || $role->role_name == "Manager" || $post->user_id == Auth::user()->id ){
                     return $next($request);
                 }
-                
             }
-            return redirect('/login');
+            return redirect(url('/login'));                
         }
     }
 }

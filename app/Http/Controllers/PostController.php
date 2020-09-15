@@ -120,7 +120,7 @@ class PostController extends Controller
         }
 
         $post->update([
-            'user_id'=>$userID,
+            // 'user_id'=>$userID,
             'post_title'=>$postTitle,
             'post_content'=>$postCont,
             'image'=>$image_data

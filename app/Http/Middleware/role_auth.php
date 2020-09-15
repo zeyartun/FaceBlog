@@ -24,7 +24,7 @@ class role_auth
                     return $next($request);
                 }
             }
-            return redirect(url('/'));               
+            return redirect(url('/login'));               
         }
     }
 }
