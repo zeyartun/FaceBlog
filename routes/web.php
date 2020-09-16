@@ -19,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index');
 Route::get('/posts', 'HomeController@posts');
 Route::get('/post/{id}/view','HomeController@postView');
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/{postID}/comment','CommentController@create');
 
-Route::group(['prefix'=>'adminHome','middleware'=>'isAuth'],function(){
+Route::group(['prefix'=>'adminHome','middleware'=>['isAuth','verified']],function(){
     Route::get('/','AdminController@index');
     Route::get('/posts','PostController@index');
     Route::get('/post/new','PostController@create');
