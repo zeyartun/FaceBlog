@@ -18,6 +18,10 @@ class UserSeeder extends Seeder
             $user = new User();
             $user->name = $faker->name;
             $user->email = "zeyar$i@gmail.com";
+            if($i < 2){
+
+                $user->email_verified_at = date("Y-m-d H:m:s");
+            }
             $user->password = bcrypt('password'); 
             $user->image = "img/userImage/user".rand(1,8)."-128x128.jpg";
             $user->save();
