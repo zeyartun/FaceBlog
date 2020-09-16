@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\comment_user;
+use App\Category;
 use Illuminate\Http\Request;
 
-class CommentUserController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $categories = Category::withTrashed()->orderBy('id','DESC')->paginate(12);
+        return view('Back.category',compact('categories','request'));
     }
 
     /**
@@ -41,10 +42,10 @@ class CommentUserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\comment_user  $comment_user
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(comment_user $comment_user)
+    public function show(Category $category)
     {
         //
     }
@@ -52,10 +53,10 @@ class CommentUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\comment_user  $comment_user
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(comment_user $comment_user)
+    public function edit(Category $category)
     {
         //
     }
@@ -64,10 +65,10 @@ class CommentUserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\comment_user  $comment_user
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, comment_user $comment_user)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -75,10 +76,10 @@ class CommentUserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\comment_user  $comment_user
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(comment_user $comment_user)
+    public function destroy(Category $category)
     {
         //
     }

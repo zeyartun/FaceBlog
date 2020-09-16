@@ -8,21 +8,7 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request, $postID)
     {
         $comm = new comment;
@@ -35,59 +21,37 @@ class CommentController extends Controller
         return redirect(url('/post/'.$postID.'/view'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function index()
     {
-        //
+        $comments = comment::orderBy('id','DESC')->paginate(12);
+        return view('Back.comment',compact('comments'));
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(comment $comment)
+    public function trash()
     {
-        //
+        $comments = comment::onlyTrashed()->orderBy('id','DESC')->paginate(12);
+        return view('Back.commentTrash',compact('comments'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(comment $comment)
+    public function store($id)
     {
-        //
+        $comment = comment::onlyTrashed()->where('id',$id);
+        $comment->restore();
+        return redirect(url('/adminHome/comment/trash'))->with('success','comment Restore!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, comment $comment)
+    public function hide($id)
     {
-        //
+        $comment = comment::findOrFail($id);
+        $comment->delete();
+        return redirect(url('/adminHome/comment'))->with('success','comment Hide!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(comment $comment)
+    public function delete($id)
     {
-        //
+        $comment = comment::onlyTrashed()->where('id',$id);
+        $comment->forceDelete();
+        return redirect(url('/adminHome/comment/trash'))->with('success','comment Deleted!');
     }
 }

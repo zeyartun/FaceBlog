@@ -14,7 +14,7 @@ class PostSeeder extends Seeder
     {
         $faker = faker\factory::create();
         
-        for ($i=1; $i < 20 ; $i++) { 
+        for ($i=1; $i <= 20 ; $i++) { 
             $post = new post();
             $post->user_id = rand(1,4);
             $post->post_title = $faker->text(20);

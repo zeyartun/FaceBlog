@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 use App\post;
 use App\comment;
-use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Message;
+use App\Http\Requests\messageRequest;
 
 class HomeController extends Controller
 {
@@ -30,6 +29,17 @@ class HomeController extends Controller
         $post = post::find($id);
         // dd($comm);
         return view('Front.postView',compact('post','comm','user'));
+    }
+
+    public function message(messageRequest $request)
+    {
+        $message = new Message;
+        $message->name = $request->name;
+        $message->email = $request->email;
+        $message->subject = $request->subject;
+        $message->message = $request->message;
+        $message->save();
+        return redirect('/')->with('success','Your message has been sent. Thank you!');
     }
 
 }

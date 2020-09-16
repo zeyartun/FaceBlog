@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-    
 
 
 Route::get('/', 'HomeController@index');
+Route::post('/message/send', 'HomeController@message');
+
 Route::get('/posts', 'HomeController@posts');
 Route::get('/post/{id}/view','HomeController@postView');
 Auth::routes(['verify' => true]);
@@ -44,6 +45,35 @@ Route::group(['prefix'=>'adminHome','middleware'=>['isAuth','verified']],functio
         
         Route::get('/members','UserController@show');
         Route::get('/roles','RoleController@index');
+
+        Route::group(['prefix' => 'category'], function () {
+            
+            Route::get('/','CategoryController@index');
+            Route::get('/new','CategoryController@create');
+            Route::get('/{id}/edit','CategoryController@edit');
+            Route::post('/{id}/update','CategoryController@update');
+            Route::post('/{id}/delete','CategoryController@delete');
+
+        });
+
+        Route::group(['prefix' => 'messages'], function () {
+        
+            Route::get('/','MessageController@index');
+            Route::get('/{id}/hide','MessageController@hide');
+            Route::get('/{id}/store','MessageController@store');
+            Route::get('/{id}/delete','MessageController@delete');
+            Route::get('/trash','MessageController@trash');
+        });
+
+        Route::group(['prefix' => 'comment'], function () {
+            Route::get('/','CommentController@index');
+            Route::get('/{id}/hide','CommentController@hide');
+            Route::get('/{id}/store','CommentController@store');
+            Route::get('/{id}/delete','CommentController@delete');
+            Route::get('/trash','CommentController@trash');
+        });    
+
+
     });
 
     Route::group(['middleware'=>'isAdmin'], function () {

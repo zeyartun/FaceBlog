@@ -201,13 +201,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href={{ url('/adminHome') }} class="nav-link">
+                                    <a href={{ url('/adminHome') }} class="nav-link {{ (Request()->is('adminHome')) ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Admin</p>
+                                        <p>Admin</p>                                        
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href={{ url('/adminHome/posts') }} class="nav-link">
+                                    <a href={{ url('/adminHome/posts') }} class="nav-link {{ (Request()->is('adminHome/posts') || Request()->is('adminHome/post/'.Request()->id.'/view')) ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Posts</p>
                                     </a>
@@ -215,15 +215,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 @foreach (auth()->user()->roles as $role)
                                 @if ($role->role_name == "Manager" || $role->role_name == "Admin" )
                                 <li class="nav-item">
-                                    <a href={{ url('/adminHome/members') }} class="nav-link">
+                                    <a href={{ url('/adminHome/category') }} class="nav-link {{ (Request()->is('adminHome/category')) ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                    <p>Categories</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href={{ url('/adminHome/members') }} class="nav-link {{ (Request()->is('adminHome/members') || Request()->is('adminHome/member/'.Request()->id.'/edit')) ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                     <p>Members</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href={{ url('/adminHome/roles') }} class="nav-link">
+                                    <a href={{ url('/adminHome/messages') }} class="nav-link {{ (Request()->is('adminHome/messages')|| Request()->is('adminHome/messages/trash')) ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                    <p>Messages</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href={{ url('/adminHome/comment') }} class="nav-link {{ (Request()->is('adminHome/comment')||Request()->is('adminHome/comment/trash')) ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                    <p>Comments</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href={{ url('/adminHome/roles') }} class="nav-link {{ (Request()->is('adminHome/roles')) ? 'active' : '' }}">
                                         <i class="nav-icon fas fa-th"></i>
-                                        <p>Role</p>
+                                        <p>Roles</p>
                                     </a>
                                 </li>
                                 @break
