@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Category::withTrashed()->orderBy('id','DESC')->paginate(12);
+        $categories = Category::orderBy('id','DESC')->paginate(12);
         return view('Back.category',compact('categories','request'));
     }
 
@@ -23,9 +23,12 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $category = new Category;
+        $category->category_name = $request->newCategory;
+        $category->save();
+        return redirect(url('/adminHome/category'))->with('success','Add New Category');
     }
 
     /**
@@ -56,9 +59,12 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Request $request)
     {
-        //
+        $editCategory = $request->editCategory;
+        $category = Category::where('id',$request->oldCategory);
+        $category->update(['category_name' => $editCategory]);
+        return redirect(url('/adminHome/category'))->with('success','Update Category');
     }
 
     /**
@@ -79,8 +85,10 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect(url('/adminHome/category'))->with('success','Deleted Category');
     }
 }

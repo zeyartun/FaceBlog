@@ -50,9 +50,8 @@ Route::group(['prefix'=>'adminHome','middleware'=>['isAuth','verified']],functio
             
             Route::get('/','CategoryController@index');
             Route::get('/new','CategoryController@create');
-            Route::get('/{id}/edit','CategoryController@edit');
-            Route::post('/{id}/update','CategoryController@update');
-            Route::post('/{id}/delete','CategoryController@delete');
+            Route::get('/edit','CategoryController@edit');
+            Route::get('/{id}/delete','CategoryController@destroy');
 
         });
 
