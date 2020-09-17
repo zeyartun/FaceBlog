@@ -1,6 +1,6 @@
 @extends('Front.layouts.app')
 
-@section('title','index')
+@section('title','MMITS | Home')
 
 @section('content')
 <main id="main">

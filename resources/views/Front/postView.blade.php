@@ -1,6 +1,6 @@
 @extends('Front.layouts.app')
 
-@section('title','Posts')
+@section('title','MMITS | Post View')
     
 @section('content')
 <section>

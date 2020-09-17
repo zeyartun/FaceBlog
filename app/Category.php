@@ -7,5 +7,7 @@ class Category extends Model
 {
     protected $fillable = ['category_name'];
 
-    //
+    public function posts(){
+        return $this->belongsToMany('App\post','category_posts');
+    }
 }

@@ -4,6 +4,7 @@
     
 @section('content')
     <div class="container-fluid">
+      @include('Back.success')
       <a href="{{url('adminHome/comment')}}" class="btn btn-info mb-3 float-right">comments</a>
       <table class="table">
         <thead class="thead-dark">

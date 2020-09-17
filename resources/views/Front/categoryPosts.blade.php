@@ -32,7 +32,7 @@
             
             @endforeach            
         </div>
-        <div>{{$AllPosts->links()}}</div>
+        {{-- <div>{{$AllPosts->links()}}</div> --}}
         
     </div>
 </section>

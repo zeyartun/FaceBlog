@@ -4,6 +4,8 @@
     
 @section('content')
     <div class="container">
+      @include('Back.success')
+      @include('Back.error')
       <div class="row">
         <div class="col-4">
           <form action="{{url('/adminHome/category/new')}}">

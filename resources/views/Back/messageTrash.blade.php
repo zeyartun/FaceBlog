@@ -4,6 +4,7 @@
     
 @section('content')
     <div class="container-fluid">
+      @include('Back.success')
       <a href="{{url('adminHome/messages')}}" class="btn btn-info mb-3 float-right">Messages</a>
       <table class="table">
         <thead class="thead-dark">

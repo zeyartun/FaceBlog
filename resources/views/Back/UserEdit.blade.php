@@ -4,7 +4,8 @@
     
 @section('content')
 <section>
-    <div class="container">    
+    <div class="container">
+      @include('Back.success')    
       <div class="text-center">
         <img src="{{asset($user->image)}}" alt="" width="150px" class="img-thumbnail">
       </div>   

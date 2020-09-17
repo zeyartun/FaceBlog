@@ -6,16 +6,28 @@ use App\post;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use App\Category;
 
 class PostController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
     }
-    public function index()
+    public function index(Request $req)
     {
-        $posts = post::withTrashed()->orderBy('id','DESC')->paginate(12);
-        return view('Back.posts',compact('posts'));
+        if($req->category){
+
+            $category = Category::findOrFail($req->category);
+            $posts = $category->posts;
+            $categories = Category::all();
+            return view('Back.category_posts',compact('posts','categories'));
+
+        }else{
+
+            $categories = Category::all();
+            $posts = post::withTrashed()->orderBy('id','DESC')->paginate(12);
+            return view('Back.posts',compact('posts','categories'));
+        }
     }
 
     /**
@@ -25,7 +37,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('Back.postNew');
+        $categories = Category::all();
+        return view('Back.postNew',compact('categories'));
     }
 
     /**
@@ -38,6 +51,7 @@ class PostController extends Controller
     {
         $userID = Auth::User()->id;
         $title = $req->PostTitle;
+        $categories = $req->category_names;
         $content = $req->PostContent;
 
         $image = $req->file('file');
@@ -53,6 +67,7 @@ class PostController extends Controller
         $post->post_content = $content;
         $post->image = '/img'.'/'.$imageName;
         $post->save();
+        $post->categories()->sync($categories);
         return redirect('adminHome/posts')->with('success','Success post!');
     }
 
@@ -78,8 +93,8 @@ class PostController extends Controller
     public function edit($postID)
     {
         $post = post::withTrashed()->find($postID);
-
-        return view('Back/postEdit',compact('post'));
+        $categories = Category::all();
+        return view('Back/postEdit',compact('post','categories'));
 
     }
 
@@ -93,6 +108,7 @@ class PostController extends Controller
     public function update(Request $request , $postID)
     {
         $userID = Auth::user()->id;
+        $categories = $request->category_names;
         $post = post::withTrashed()->find($postID);
 
         $postTitle = $request->PostTitle;
@@ -125,6 +141,8 @@ class PostController extends Controller
             'post_content'=>$postCont,
             'image'=>$image_data
             ]);
+
+        $post->categories()->sync($categories);
         return redirect('adminHome/posts')->with('success','Success Update Post');
 
     }
@@ -156,4 +174,5 @@ class PostController extends Controller
         post::withTrashed()->find($id)->restore();
         return redirect('adminHome/posts')->with('success','Success Restore post!');
     }
+
 }

@@ -12,6 +12,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <title>@yield('title')</title>
 
+    <meta content="" name="Myanmar IT Service">
+    <meta content="" name="Myanmar IT Service">
+
+    <!-- Favicons -->
+    <link href={{asset('assets/img/mmits logo.png')}} rel="icon">
+    <link href=http://localhost:8000/assets/img/apple-touch-icon.png rel="apple-touch-icon">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href={{ asset('/admin/plugins/fontawesome-free/css/all.min.css') }}>
     <!-- Theme style -->
@@ -195,47 +201,48 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Starter Pages
+                                    Admin Dashboard
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href={{ url('/adminHome') }} class="nav-link {{ (Request()->is('adminHome')) ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Admin</p>                                        
+                                        <i class="far fa-flag nav-icon"></i>
+                                        <p>Over View</p>                                        
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href={{ url('/adminHome/posts') }} class="nav-link {{ (Request()->is('adminHome/posts') || Request()->is('adminHome/post/'.Request()->id.'/view')) ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fa fa-book nav-icon"></i>
                                         <p>Posts</p>
                                     </a>
                                 </li>
                                 @foreach (auth()->user()->roles as $role)
                                 @if ($role->role_name == "Manager" || $role->role_name == "Admin" )
-                                <li class="nav-item">
-                                    <a href={{ url('/adminHome/category') }} class="nav-link {{ (Request()->is('adminHome/category')) ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                    <p>Categories</p>
-                                    </a>
-                                </li>
+                                
                                 <li class="nav-item">
                                     <a href={{ url('/adminHome/members') }} class="nav-link {{ (Request()->is('adminHome/members') || Request()->is('adminHome/member/'.Request()->id.'/edit')) ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fa fa-users nav-icon"></i>
                                     <p>Members</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href={{ url('/adminHome/messages') }} class="nav-link {{ (Request()->is('adminHome/messages')|| Request()->is('adminHome/messages/trash')) ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="far fa-comment nav-icon"></i>
                                     <p>Messages</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href={{ url('/adminHome/comment') }} class="nav-link {{ (Request()->is('adminHome/comment')||Request()->is('adminHome/comment/trash')) ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="far fa-comments nav-icon"></i>
                                     <p>Comments</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href={{ url('/adminHome/category') }} class="nav-link {{ (Request()->is('adminHome/category')) ? 'active' : '' }}">
+                                        <i class="far fa-object-ungroup nav-icon"></i>
+                                    <p>Categories</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">

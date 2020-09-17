@@ -88,7 +88,12 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
-        $category->delete();
-        return redirect(url('/adminHome/category'))->with('success','Deleted Category');
+        // dd($category->posts->isEmpty());
+        if($category->posts->isEmpty()){
+            $category->delete();
+            return redirect(url('/adminHome/category'))->with('success','Deleted Category');
+        }else{
+            return redirect(url('/adminHome/category'))->with('error','Please Move to other Category Or Deleted All Post in this Category');
+        }
     }
 }

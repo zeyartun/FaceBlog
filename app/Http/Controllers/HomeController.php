@@ -4,20 +4,34 @@ namespace App\Http\Controllers;
 use App\post;
 use App\comment;
 use App\Message;
+use App\Category;
 use App\Http\Requests\messageRequest;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     { 
+        $categories = Category::all();
         $AllPosts = post::orderBy('id','DESC')->paginate(6);   
-        return view('Front.index',compact('AllPosts'));
+        return view('Front.index',compact('AllPosts','categories'));
     }
 
-    public function posts()
+    public function posts(Request $req)
     {
-        $AllPosts = post::orderBy('id','DESC')->paginate(9);
-        return view('Front.posts',compact('AllPosts'));
+        // dd($req->category);
+        if($req->category){
+            $category = Category::findOrFail($req->category);
+            $AllPosts = $category->posts;
+            $categories = Category::all();
+            return view('Front.categoryPosts',compact('AllPosts','categories'));
+
+        }else{
+
+            $categories = Category::all();
+            $AllPosts = post::orderBy('id','DESC')->paginate(9);
+            return view('Front.posts',compact('AllPosts','categories'));
+        }
     }
     public function postView($id)
     {

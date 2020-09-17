@@ -44,6 +44,6 @@
       </div>
       @endforeach
     </div>
-    {{$posts->links()}}
+    {{-- {{$category->links()}} --}}
   </div>
 @endsection

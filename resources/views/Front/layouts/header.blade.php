@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href={{ asset('assets/img/favicon.png') }} rel="icon">
-    <link href={{ asset('assets/img/apple-touch-icon.png') }} rel="apple-touch-icon">
+    <link href={{ asset('assets/img/mmis.png') }} rel="icon">
+    <link href={{ asset('assets/img/mmis.png') }} rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link
@@ -45,9 +45,9 @@
         <div class="container d-flex align-items-center">
 
             <div class="logo mr-auto">
-                <h1 class="text-light"><a href={{ url('/') }}><span>FaceBlog</span></a></h1>
+                {{-- <h1 class="text-light"><a href={{ url('/') }}><span>Myanmar IT Service</span></a></h1> --}}
                 <!-- Uncomment below if you prefer to use an image logo -->
-                <!-- <a href="index.html"><img src={{ asset('assets/img/logo.png') }} alt="" class="img-fluid"></a>-->
+                 <a href="index.html"><img src={{ asset('assets/img/mmitslogo.png') }} alt="" class="img-fluid"></a>
             </div>
 
             <nav class="nav-menu d-none d-lg-block">

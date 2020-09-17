@@ -36,7 +36,7 @@ Route::group(['prefix'=>'adminHome','middleware'=>['isAuth','verified']],functio
         Route::get('/post/{id}/hide','PostController@hide');
         Route::get('/post/{id}/delete','PostController@destroy');
         Route::get('/post/{id}/restore','PostController@restore');
-        
+        // Route::get('/category/{id}/posts','PostController@categoryPost');
         Route::get('/post/{id}/edit','PostController@edit');
         Route::post('/post/{id}/update','PostController@update');
     });
