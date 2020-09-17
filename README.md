@@ -5,30 +5,58 @@ git clone https://github.com/zeyartun/FaceBlog.git
 cd FaceBlog
 composer update
 cp .env.example .env
-change Database Name...
+change Database Name...***
 php artisan migrate:fresh --seed
 php artisan serve
+
 ```
-# login
+# login as Admin
 ### To Admin => localhost:8000/adminHome 
-## (Please See you want to login role's email)
+### (You must have role and You must confirm with email)
+
 ### useremail => zeyar0@gmail.com
 ### password => password
 
 
 
 # You Can Do It.
+### Email Confirm if you login to admin dashboard(localhost:8000/adminHome)
+### Password Forget Email
+### Password reset Email
+
 ### Can Edit User profile image
+### Can See posts By Category
 ### Can Edit post and add post image
 ### Can Hide and Delete post
+### Can Send message
 ### Can Comment in posts But you must be login
-### Admin => can see all members and edit all posts
-### manger => can't see all member but edit all posts
-### author => can't see all member but edit his posts
-### other => can comment and see all posts but can't new posts
 
-# Need to work
+## By Admin 
+```
+      => can see all members and edit roles
+      => can edit category (but can't delete if category have posts)
+      => can edit all posts (content and category) add to many categories
+      => can see messages and comment (hide,restore,delete)
+```
+## By Manger 
+```
+      => can see all members can't edit roles ***
+      => can edit category (but can't delete if category have posts)
+      => can edit all posts (content and category) add to many categories
+      => can see messages and comment (hide,restore,delete)
+```
+## author 
+```
+      => can see all post but edit his posts
+      => can edit his posts only (content and category)
+```
+## other 
+```
+      => can comment 
 
-### Protect Manager Route
-### Redirect to Home page if not member
-### need edit role for members
+```
+### To Do
+```
+      English to myanmar
+      API
+```
