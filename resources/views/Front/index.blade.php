@@ -4,7 +4,14 @@
 
 @section('content')
 <main id="main">
+  
+  
   @include('Front.layouts.hero')
+  <div class="p-2 m-2 text-success text-center">
+    {{ __('lang.message') }} 
+    {{ __('lang.greeting') }}
+    {{-- {{dd($session)}} --}}
+  </div>
 
     <!-- ======= About Section ======= -->
     @include('Front.modual.about')

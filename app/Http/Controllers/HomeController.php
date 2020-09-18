@@ -10,11 +10,12 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     { 
+        $session = $request->session()->all();
         $categories = Category::all();
         $AllPosts = post::orderBy('id','DESC')->paginate(6);   
-        return view('Front.index',compact('AllPosts','categories'));
+        return view('Front.index',compact('AllPosts','categories','session'));
     }
 
     public function posts(Request $req)

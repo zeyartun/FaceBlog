@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/localization/{locale}','LocalizationController@index');
+Route::get('/session','LocalizationController@sessionDel');
 
 Route::get('/', 'HomeController@index');
 Route::post('/message/send', 'HomeController@message');

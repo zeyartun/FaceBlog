@@ -47,7 +47,7 @@
             <div class="logo mr-auto">
                 {{-- <h1 class="text-light"><a href={{ url('/') }}><span>Myanmar IT Service</span></a></h1> --}}
                 <!-- Uncomment below if you prefer to use an image logo -->
-                 <a href="index.html"><img src={{ asset('assets/img/mmitslogo.png') }} alt="" class="img-fluid"></a>
+            <a href="{{url('/session')}}"><img src={{ asset('assets/img/mmitslogo.png') }} alt="" class="img-fluid"></a>
             </div>
 
             <nav class="nav-menu d-none d-lg-block">
@@ -88,9 +88,16 @@
                                 </div>
                             </li>
                         @endguest                  
-
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"> 
+                                language
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item text-info text-center px-0" href="{{ url('localization/en') }}"> English </a>
+                                <a class="dropdown-item text-info text-center px-0" href="{{ url('localization/my') }}"> Myanmar </a>
+                            </div>
+                        </li>
                 </ul>
             </nav><!-- .nav-menu -->
-
         </div>
     </header><!-- End Header -->
