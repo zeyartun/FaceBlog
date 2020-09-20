@@ -170,8 +170,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        @if(auth::user()->image) {
-                            <img src={{asset('/'.auth::user()->image)}}  class="img-circle elevation-2"> 
+                        @if(Auth()->user()->image) {
+                            <img src={{asset('/'.Auth()->user()->image)}}  class="img-circle elevation-2"> 
                         }
                         @else{ 
                             <img src={{asset('admin/dist/img/user1-128x128.jpg')}} class="img-circle elevation-2">
@@ -179,12 +179,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         @endif
                     </div>
                     <div class="info">
-                    <a href="#" class="d-block">{{auth::user()->name}}</a>
+                    <a href="#" class="d-block">{{Auth()->user()->name}}</a>
                     </div>
 
                 </div>
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    @foreach(auth()->user()->roles as $role)
+                    @foreach(Auth()->user()->roles as $role)
                     <span class="badge badge-info m-1">
                         {{$role->role_name}}
                     </span>

@@ -47,26 +47,26 @@
             <div class="logo mr-auto">
                 {{-- <h1 class="text-light"><a href={{ url('/') }}><span>Myanmar IT Service</span></a></h1> --}}
                 <!-- Uncomment below if you prefer to use an image logo -->
-            <a href="{{url('/session')}}"><img src={{ asset('assets/img/mmitslogo.png') }} alt="" class="img-fluid"></a>
+            <a href="{{url('/')}}"><img src={{ asset('assets/img/mmitslogo.png') }} alt="" class="img-fluid"></a>
             </div>
 
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
-                    <li class="active"><a href={{ url('/') }}>Home</a></li>
-                    <li><a href={{ url('/#about') }}>About</a></li>
-                    <li><a href={{ url('/#features') }}>Features</a></li>
-                    <li><a href={{ url('/#gallery') }}>Gallery</a></li>
-                    <li><a href={{ url('/#team') }}>Team</a></li>
-                    <li><a href={{ url('/#pricing') }}>Pricing</a></li>
-                    <li class="drop-down"><a href={{ url('/posts') }}>Posts</a></li>
-                    <li><a href= {{ url('/#contact') }}>Contact</a></li>
+                    {{-- <li class="active"><a href={{ url('/') }}>{{ __('lang.Home') }}</a></li> --}}
+                    <li><a href={{ url('/#about') }}>{{ __('lang.About') }}</a></li>
+                    <li><a href={{ url('/#features') }}>{{ __('lang.Categories') }}</a></li>
+                    <li><a href={{ url('/#gallery') }}>{{ __('lang.Gallery') }}</a></li>
+                    <li><a href={{ url('/#team') }}>{{ __('lang.Team') }}</a></li>
+                    <li><a href={{ url('/#pricing') }}>{{ __('lang.Pricing') }}</a></li>
+                    <li class="drop-down"><a href={{ url('/posts') }}>{{ __('lang.Posts') }}</a></li>
+                    <li><a href= {{ url('/#contact') }}>{{ __('lang.Contact') }}</a></li>
                     @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('lang.Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('lang.Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -79,7 +79,7 @@
                                     <a class="text-info text-center px-0" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('lang.Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -90,11 +90,11 @@
                         @endguest                  
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"> 
-                                language
+                                {{ __('lang.ChangeLanguage') }}
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item text-info text-center px-0" href="{{ url('localization/en') }}"> English </a>
-                                <a class="dropdown-item text-info text-center px-0" href="{{ url('localization/my') }}"> Myanmar </a>
+                                <a class="dropdown-item text-info text-center px-0" href="{{ url('localization/en') }}"> {{ __('English') }} </a>
+                                <a class="dropdown-item text-info text-center px-0" href="{{ url('localization/my') }}"> {{ __('မြန်မာ') }} </a>
                             </div>
                         </li>
                 </ul>
