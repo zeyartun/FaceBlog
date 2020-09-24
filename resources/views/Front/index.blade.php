@@ -5,7 +5,6 @@
 @section('content')
 <main id="main">
   
-  
   @include('Front.layouts.hero')
 
     <!-- ======= About Section ======= -->

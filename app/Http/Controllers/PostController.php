@@ -17,10 +17,11 @@ class PostController extends Controller
     {
         if($req->category){
 
-            $category = Category::findOrFail($req->category);
-            $posts = $category->posts;
+            $posts = Category::findOrFail($req->category)->posts()->withTrashed()->orderBy('id','DESC')->paginate(12);
+            // dd($category);
+            // $posts = $category->posts;
             $categories = Category::all();
-            return view('Back.category_posts',compact('posts','categories'));
+            return view('Back.posts',compact('posts','categories'));
 
         }else{
 

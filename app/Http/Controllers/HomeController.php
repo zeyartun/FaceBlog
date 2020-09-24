@@ -22,10 +22,18 @@ class HomeController extends Controller
     {
         // dd($req->category);
         if($req->category){
-            $category = Category::findOrFail($req->category);
-            $AllPosts = $category->posts;
+            $AllPosts = Category::findOrFail($req->category)->posts()->orderBy('id','DESC')->paginate(12);
+            // $AllPosts = $category->posts;
             $categories = Category::all();
-            return view('Front.categoryPosts',compact('AllPosts','categories'));
+            return view('Front.posts',compact('AllPosts','categories'));
+
+        }if($req->search){
+            $AllPosts = post::where('post_title','LIKE','%'.$req->search.'%')
+            ->orWhere('post_content','LIKE','%'.$req->search.'%')
+            ->orderBy('id','DESC')->paginate(12);
+            // $AllPosts = $category->posts;
+            $categories = Category::all();
+            return view('Front.posts',compact('AllPosts','categories'));
 
         }else{
 

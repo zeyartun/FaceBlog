@@ -76,7 +76,7 @@
 
     <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
     <div id="preloader"></div>
-
+    
     <!-- Vendor JS Files -->
     <script src={{ asset('assets/vendor/jquery/jquery.min.js') }}></script>
     <script src={{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}></script>
@@ -90,7 +90,12 @@
 
     <!-- Template Main JS File -->
     <script src={{ asset('assets/js/main.js') }}></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+    @include('Front.layouts.mevue')
+  
 </body>
 
 </html>

@@ -58,7 +58,7 @@
                   @enderror
             </div>
             <div class="form-group">
-              <textarea class="form-control" name="message" required rows="5" data-rule="required" class="@error('title') is-invalid @enderror" placeholder="Message"></textarea>
+              <textarea class="form-control" name="message" required rows="5" data-rule="required" class="@error('title') is-invalid @enderror" placeholder="Message Must be 5 words to 250 words."></textarea>
               @error('message')
                       <div class="alert alert-danger">{{ $message }}</div>
                   @enderror

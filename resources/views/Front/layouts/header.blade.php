@@ -51,6 +51,7 @@
             </div>
 
             <nav class="nav-menu d-none d-lg-block">
+                
                 <ul>
                     {{-- <li class="active"><a href={{ url('/') }}>{{ __('lang.Home') }}</a></li> --}}
                     <li><a href={{ url('/#about') }}>{{ __('lang.About') }}</a></li>
@@ -97,7 +98,24 @@
                                 <a class="dropdown-item text-info text-center px-0" href="{{ url('localization/my') }}"> {{ __('မြန်မာ') }} </a>
                             </div>
                         </li>
+                        <li>
+                            <a class="text-center text-center" data-toggle="modal" data-target="#SearchModal">
+                                <i class="ri-search-line btn btn-info py-1 px-3" style="font:bold;" ></i>
+                            </a>
+                        </li>
                 </ul>
+                
             </nav><!-- .nav-menu -->
-        </div>
+        </div>        
     </header><!-- End Header -->
+    <div class="modal fade" id="SearchModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">                
+            <div class="modal-body p-1">
+              <form action="/posts">
+                  <input type="text" class="form-control" name="search" placeholder="Search Post">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>

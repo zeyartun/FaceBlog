@@ -31,7 +31,18 @@
         @endauth 
 
         <hr>
-        <div class="card mb-3">
+
+        <div id="app">
+        <h1>@{{title}}</h1>
+        <form @submit.prevent="todoa">
+            <input type="input" v-model="egg">
+        </form>
+           <ul>
+           <li v-for='comment in comments'>@{{comment.comment}}</li>
+           </ul>
+        </div>
+
+        <div class="card mb-3" id="command">
                             
                 @foreach ($comm as $com)
                 <div class="row">
@@ -43,10 +54,9 @@
                         <p>{{$com->comment}}</p>
                     </div> 
                 </div>           
-                @endforeach     
+                @endforeach 
             </div> 
     </div>
 
 </section>
 @endsection
-

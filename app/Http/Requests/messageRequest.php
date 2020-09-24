@@ -27,7 +27,7 @@ class messageRequest extends FormRequest
             'name'=>'required|max:20|min:3',
             'email'=>'email:rfc,dns',
             'subject'=>'required',
-            'message'=>'required',
+            'message'=>'required|max:250|min:5',
         ];
     }
 }
