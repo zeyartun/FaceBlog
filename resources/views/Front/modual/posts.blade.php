@@ -7,7 +7,7 @@
     </div>
       <div class="row">          
           @foreach ($AllPosts as $post)                
-          <div class="col-md-4">
+          <div class="col-md-4 col-6">
               <div class="card mb-4 gallery-item"  data-aos="zoom-in">
                   @if ($post->image != null)
                       <a href={{url('/post/'.$post->id.'/view')}}>
@@ -17,7 +17,9 @@
                   <div class="card-body">
                   <h5 class="card-title">{{$post->post_title}}</h5>
                   <p>Author By <b>{{$post->user->name}}</b> <br> <i>{{date('d-m-Y',strtotime($post->created_at))}}</i></p>
-                  <p class="card-text">{{ Str::limit($post->post_content,100) }}</p>
+                  <div class="visible-lg visible-md">
+                      <p class="card-text">{{ Str::limit($post->post_content,50) }}</p>
+                  </div>
                   <a href={{url('/post/'.$post->id.'/view')}} class="btn btn-primary">View</a>
                   </div>
               </div>

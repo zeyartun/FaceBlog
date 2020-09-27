@@ -7,7 +7,7 @@
       </div>
       <div class="row">
         @foreach ($categories as $category)
-        <div class="col-lg-3 col-md-4 mt-4">
+        <div class="col-lg-3 col-md-4 col-6 mt-4">
           <a href="{{url('/posts?category='.$category->id)}}">
           <div class="icon-box" data-aos="zoom-in" data-aos-delay="400">
             <i class="ri-price-tag-2-line" style="color: #4233ff;"></i>

@@ -42,7 +42,7 @@
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center">
-        <div class="container d-flex align-items-center">
+        <div class="container-fluid d-flex align-items-center">
 
             <div class="logo mr-auto">
                 {{-- <h1 class="text-light"><a href={{ url('/') }}><span>Myanmar IT Service</span></a></h1> --}}

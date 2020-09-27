@@ -7,7 +7,7 @@
     <div class="container mt-5">
         <div class="row">
             @foreach ($categories as $category)
-              <div class="col-2 mb-3">
+              <div class="col-lg-2 col-md-3 col-6">
               <a href="{{url('/posts?category='.$category->id)}}" class="btn btn-outline-info m-2 w-100">{{$category->category_name}}</a>
               </div>
             @endforeach
