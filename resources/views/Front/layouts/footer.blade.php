@@ -90,12 +90,7 @@
 
     <!-- Template Main JS File -->
     <script src={{ asset('assets/js/main.js') }}></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    @include('Front.layouts.mevue')
-  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> 
 </body>
 
 </html>

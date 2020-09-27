@@ -13,11 +13,16 @@ class ApiCommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($post_id)
+    public function index(Request $req)
     {
-        $comments = post::find($post_id)->comments()->orderBy('id','DESC')->get();
-        return response()->json(compact('comments'));
-        // return $comments;
+        if($req->post_id){
+            $comments = post::find($req->post_id)->comments()->orderBy('id','DESC')->get();
+        }else{
+
+            $comments = comment::all();
+        }
+        // return response()->json(compact('comments'));
+        return $comments;
     }
 
     /**
@@ -28,7 +33,10 @@ class ApiCommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        $comment = new comment;
+        $comment = comment::create($request->only('comment','post_id','user_id'));
+        return $comment;
     }
 
     /**

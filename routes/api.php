@@ -12,4 +12,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('post', 'ApiPostController');
 
-Route::get('/{post_id}/comments','ApiCommentController@index');
+Route::get('/comments','ApiCommentController@index');

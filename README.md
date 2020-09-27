@@ -53,10 +53,21 @@ php artisan serve
 ## other 
 ```
       => can comment 
+```
+### API
+```
+      GET  | api/post | post.index  | App\Http\Controllers\ApiPostController@index 
 
-```
-### To Do
-```
-      English to myanmar
-      API
+      POST | api/post | post.store | App\Http\Controllers\ApiPostController@store 
+
+      GET  | api/post/create   | post.create  | App\Http\Controllers\ApiPostController@create
+
+      GET   | api/post/{post}   | post.show  | App\Http\Controllers\ApiPostController@show  
+
+      PUT   | api/post/{post}| post.update | App\Http\Controllers\ApiPostController@update
+
+      DELETE | api/post/{post} | post.destroy | App\Http\Controllers\ApiPostController@destroy
+      
+      GET   | api/post/{post}/edit | post.edit | App\Http\Controllers\ApiPostController@edit 
+      
 ```
