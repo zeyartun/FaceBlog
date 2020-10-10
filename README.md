@@ -1,5 +1,5 @@
 # FaceBlog
-
+![GitHub Logo](faceblog.PNG)
 ```
 git clone https://github.com/zeyartun/FaceBlog.git
 cd FaceBlog
