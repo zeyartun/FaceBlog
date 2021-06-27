@@ -80,7 +80,8 @@ class PostController extends Controller
     public function show($id)
     {
         $post = post::withTrashed()->find($id);
-        $user = post::find($id)->user;
+        $user = post::withTrashed()->find($id)->user;
+
         return view('back.postView',compact('post','user'));
     }
 
@@ -117,7 +118,7 @@ class PostController extends Controller
         $image = $request->file('file');
 
         // dd($image);
-        
+
         if($image == null){
             $image_data = $post->image;
 
