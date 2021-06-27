@@ -33,7 +33,7 @@ Route::group(['prefix'=>'adminHome','middleware'=>['isAuth','verified']],functio
     Route::get('/post/{id}/view','PostController@show');
 
     Route::group(['middleware' => ['isAuthor']], function () {
-        
+
         Route::get('/post/{id}/hide','PostController@hide');
         Route::get('/post/{id}/delete','PostController@destroy');
         Route::get('/post/{id}/restore','PostController@restore');
@@ -41,14 +41,14 @@ Route::group(['prefix'=>'adminHome','middleware'=>['isAuth','verified']],functio
         Route::get('/post/{id}/edit','PostController@edit');
         Route::post('/post/{id}/update','PostController@update');
     });
-    
+
     Route::group(['middleware'=>'isManager'], function () {
-        
+
         Route::get('/members','UserController@show');
         Route::get('/roles','RoleController@index');
 
         Route::group(['prefix' => 'category'], function () {
-            
+
             Route::get('/','CategoryController@index');
             Route::get('/new','CategoryController@create');
             Route::get('/edit','CategoryController@edit');
@@ -57,7 +57,7 @@ Route::group(['prefix'=>'adminHome','middleware'=>['isAuth','verified']],functio
         });
 
         Route::group(['prefix' => 'messages'], function () {
-        
+
             Route::get('/','MessageController@index');
             Route::get('/{id}/hide','MessageController@hide');
             Route::get('/{id}/store','MessageController@store');
@@ -71,7 +71,7 @@ Route::group(['prefix'=>'adminHome','middleware'=>['isAuth','verified']],functio
             Route::get('/{id}/store','CommentController@store');
             Route::get('/{id}/delete','CommentController@delete');
             Route::get('/trash','CommentController@trash');
-        });    
+        });
 
 
     });
@@ -80,8 +80,8 @@ Route::group(['prefix'=>'adminHome','middleware'=>['isAuth','verified']],functio
         Route::get('/member/{id}/edit','UserController@edit');
         Route::post('/member/{id}/update','UserController@update');
     });
-    
-    
+
+
 });
 
 

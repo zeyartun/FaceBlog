@@ -16,8 +16,7 @@ class authorMiddle
      */
     public function handle($request, Closure $next)
     {
-        $post = post::find($request->id);
-        // dd($post);
+        $post = post::withTrashed()->find($request->id);
         if(!Auth::check()){
             return redirect('/login');
         }else{
@@ -26,7 +25,7 @@ class authorMiddle
                     return $next($request);
                 }
             }
-            return redirect(url('/login'));                
+            return redirect(url('/login'));
         }
     }
 }
